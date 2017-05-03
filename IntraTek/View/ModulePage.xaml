@@ -1,0 +1,57 @@
+﻿<Page
+    x:Class="IntraTek.View.ModulePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:IntraTek.View"
+    xmlns:vm="using:IntraTek.ViewModel"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.DataContext>
+        <vm:ModuleViewModel />
+    </Page.DataContext>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" MaxWidth="900">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <local:MainMenu Grid.Row="0" />
+        <ListView Grid.Row="1" ItemsSource="{Binding Modules}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical" MaxWidth="700">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Title, Mode=OneWay}" FontWeight="Bold" FontSize="18" />
+                            <TextBlock Text="{Binding ScolarYear, Mode=OneWay}" HorizontalAlignment="Right" />
+                        </StackPanel>
+                        <Grid Padding="5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Grade :" FontWeight="Bold" Margin="0 0 10 0" />
+                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Grade, Mode=OneWay}" />
+
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Crédits :" FontWeight="Bold" Margin="0 0 10 0" />
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Credits, Mode=OneWay}" />
+
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Barrage :" FontWeight="Bold" Margin="0 0 10 0" />
+                            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Barrage, Mode=OneWay}" />
+
+                            <TextBlock Grid.Row="3" Grid.Column="0" Text="Inscription :" FontWeight="Bold" Margin="0 0 10 0" />
+                            <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding DateIns, Mode=OneWay}" />
+                        </Grid>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>
